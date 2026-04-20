@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta -->
+  <title>Commerce Truth Layer for AEO and GEO — Public Demo</title>
+  <meta name="description" content="A public demo showing how a Commerce Truth Layer normalizes brand content and product data for search engines, AI answer surfaces, merchant feeds, and future shopping assistants. Covers AEO, GEO, and structured data best practices.">
+  <meta name="author" content="Commerce Truth Layer Project">
+
+  <!-- Canonical URL (replace placeholder before publishing) -->
+  <link rel="canonical" href="https://moghthalkushal.github.io/aeo-demo/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Commerce Truth Layer for AEO and GEO">
+  <meta property="og:description" content="Public demo: how a Commerce Truth Layer improves answerability for Google, AI answers, merchant feeds, and shopping assistants.">
+  <meta property="og:url" content="https://moghthalkushal.github.io/aeo-demo/">
+  <meta property="og:site_name" content="Commerce Truth Layer">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Commerce Truth Layer for AEO and GEO">
+  <meta name="twitter:description" content="Public demo: how a Commerce Truth Layer improves answerability for Google, AI answers, merchant feeds, and shopping assistants.">
+
+  <!-- Favicon placeholder — replace with your own -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%23E8553A'/><text x='50' y='72' font-size='60' font-family='sans-serif' font-weight='900' fill='white' text-anchor='middle'>CT</text></svg>" type="image/svg+xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Commerce Truth Layer for AEO and GEO",
+      "url": "https://moghthalkushal.github.io/aeo-demo/",
+      "description": "A public demo showing how a Commerce Truth Layer normalizes brand content and product data for search engines, AI answer surfaces, merchant feeds, and future shopping assistants."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Commerce Truth Layer for AEO and GEO — Public Demo",
+      "url": "https://moghthalkushal.github.io/aeo-demo/",
+      "description": "Public demo: how a Commerce Truth Layer improves answerability for Google, AI answers, merchant feeds, and shopping assistants.",
+      "about": [
+        {"@type": "Thing", "name": "Answer Engine Optimization"},
+        {"@type": "Thing", "name": "Generative Engine Optimization"},
+        {"@type": "Thing", "name": "Structured Data"},
+        {"@type": "Thing", "name": "Product Information Management"}
+      ],
+      "datePublished": "2026-04-20",
+      "dateModified": "2026-04-20",
+      "inLanguage": "en-US"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Commerce Truth Layer Project",
+      "url": "https://moghthalkushal.github.io/aeo-demo/"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Answer Engine Optimization (AEO)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AEO is the practice of making web pages easier for answer engines like Google to extract and display direct answers. It involves structuring content with clear headings, answer-first layouts, and machine-readable structured data so search engines can confidently surface your content in answer boxes and featured snippets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Generative Engine Optimization (GEO)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GEO is the practice of making web content easier for generative AI tools — like ChatGPT, Google AI Overviews, and Copilot — to summarize, cite, and reference. It focuses on source transparency, clear authorship, traceable claims, and well-structured content that AI systems can understand and attribute."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a Commerce Truth Layer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Commerce Truth Layer is a governed, canonical content and data model that normalizes product information from multiple systems of record — including PIM, DAM, CMS, ERP, and legal/MLR systems — into a single source of truth. This normalized truth can then drive consistent outputs across brand websites, retailer listings, structured data feeds, AI answer surfaces, and CRM channels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does public hosting matter for AEO and GEO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Content hosted on localhost or behind firewalls cannot be seen by search engines or public AI systems. A publicly hosted page — such as on GitHub Pages — can in principle be crawled and indexed by Google, Bing, and other systems. However, public hosting does not guarantee indexing, ranking, or pickup by any search or AI engine."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="#" class="nav__brand" aria-label="Commerce Truth Layer Home">
+        <span class="nav__brand-icon" aria-hidden="true">CT</span>
+        Commerce Truth Layer
+      </a>
+
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#solution">Solution</a></li>
+        <li><a href="#aeo-geo">AEO &amp; GEO</a></li>
+        <li><a href="#demo">Demo Examples</a></li>
+        <li><a href="#readiness">Readiness</a></li>
+        <li><a href="#hosting">Why Public</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       SECTION 1 — HERO
+       ============================================================ -->
+  <header class="hero" id="hero">
+    <div class="hero__inner">
+      <div class="hero__badge">
+        <span class="hero__badge-dot" aria-hidden="true"></span>
+        Public Proof of Concept
+      </div>
+
+      <h1 class="hero__title">
+        Commerce Truth Layer<br>for <span>AEO and GEO</span>
+      </h1>
+
+      <p class="hero__description">
+        A public demo of how brand content and product truth can become more understandable 
+        to Google, AI answer engines, merchant feeds, and future commerce surfaces.
+      </p>
+
+      <div class="hero__actions">
+        <a href="#solution" class="btn btn--primary" id="cta-architecture">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          View Architecture
+        </a>
+        <a href="#demo" class="btn btn--secondary" id="cta-demo">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+          See Demo Examples
+        </a>
+        <a href="#readiness" class="btn btn--secondary" id="cta-readiness">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Technical Readiness
+        </a>
+      </div>
+
+      <!-- Explainer boxes -->
+      <div class="hero__explainers fade-in">
+        <div class="explainer-box" id="explainer-aeo">
+          <span class="explainer-box__label">AEO</span>
+          <h2 class="explainer-box__title">Answer Engine Optimization</h2>
+          <p class="explainer-box__text">
+            Making pages easier for answer engines — like Google Search, Bing, and voice assistants — 
+            to extract and display direct answers. Think of it as organizing your content so machines 
+            can find the answer quickly and confidently.
+          </p>
+        </div>
+        <div class="explainer-box" id="explainer-geo">
+          <span class="explainer-box__label">GEO</span>
+          <h2 class="explainer-box__title">Generative Engine Optimization</h2>
+          <p class="explainer-box__text">
+            Making pages easier for generative AI tools — like ChatGPT, Google AI Overviews, 
+            and Copilot — to summarize, cite, and reference. It means writing content that AI 
+            systems can understand and attribute to your brand.
+          </p>
+        </div>
+      </div>
+
+      <!-- Honest disclaimer -->
+      <div class="hero__note fade-in">
+        <strong>A note on visibility:</strong> Public hosting makes this page crawlable and indexable 
+        <em>in principle</em>, but actual visibility in Google, AI answer engines, or any other 
+        surface depends on each system's own crawling, indexing, and ranking decisions. 
+        Nothing here guarantees pickup by any search or AI engine.
+      </div>
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- ============================================================
+         SECTION 2 — THE PROBLEM
+         ============================================================ -->
+    <section class="section section--alt" id="problem">
+      <div class="container">
+        <span class="section__label fade-in">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          The Problem
+        </span>
+        <h2 class="section__title fade-in">Product truth is fragmented across systems</h2>
+        <p class="section__subtitle fade-in">
+          Product pages, retailer listings, structured data, and AI answers drift apart when there's 
+          no single source of truth. The result: inconsistent answers, poor discoverability, and weak 
+          machine understanding of your brand.
+        </p>
+        <div class="divider"></div>
+
+        <!-- Fragmented systems cards -->
+        <div class="cards-grid fade-in">
+          <article class="card card--fragmented" id="card-salsify">
+            <div class="card__icon card__icon--coral" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3 class="card__title">Salsify / PIM</h3>
+            <p class="card__text">
+              Product attributes, pack/variant definitions, descriptions, taxonomy, ingredient lists, 
+              and benefits live here — but they don't automatically flow to every surface.
+            </p>
+            <span class="card__tag">System of Record</span>
+          </article>
+
+          <article class="card card--fragmented" id="card-aprimo">
+            <div class="card__icon card__icon--coral" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <h3 class="card__title">Aprimo / DAM</h3>
+            <p class="card__text">
+              Approved assets, renditions, videos, rights metadata, and approval workflow evidence — 
+              disconnected from product data on the shelf.
+            </p>
+            <span class="card__tag">Digital Assets</span>
+          </article>
+
+          <article class="card card--fragmented" id="card-shopify">
+            <div class="card__icon card__icon--coral" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            </div>
+            <h3 class="card__title">Shopify / Storefront</h3>
+            <p class="card__text">
+              Storefront saleability, product/variant structure, page rendering, collections, 
+              and metafields — often out of sync with PIM data.
+            </p>
+            <span class="card__tag">Commerce Platform</span>
+          </article>
+
+          <article class="card card--fragmented" id="card-sfmc">
+            <div class="card__icon card__icon--coral" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <h3 class="card__title">SFMC / CRM</h3>
+            <p class="card__text">
+              Audience messaging, campaign personalization, behavioral context, and segment-based 
+              content — a separate copy of product truth.
+            </p>
+            <span class="card__tag">Marketing Cloud</span>
+          </article>
+
+          <article class="card card--fragmented" id="card-erp">
+            <div class="card__icon card__icon--coral" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <h3 class="card__title">ERP / Inventory</h3>
+            <p class="card__text">
+              Price authority, inventory authority, shipping SLA, market availability, and return 
+              policy — disconnected from the content layer.
+            </p>
+            <span class="card__tag">Operations</span>
+          </article>
+
+          <article class="card card--fragmented" id="card-legal">
+            <div class="card__icon card__icon--coral" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="card__title">Legal / MLR</h3>
+            <p class="card__text">
+              Claim approval, market restrictions, warning requirements, allowed channel 
+              designations, and compliance rules — critical but often siloed.
+            </p>
+            <span class="card__tag">Governance</span>
+          </article>
+        </div>
+
+        <div class="hero__note fade-in" style="margin-top: 2.5rem;">
+          <strong>The result:</strong> Unless these systems are normalized through a shared truth layer, 
+          each channel ends up with a different version of the product story — leading to 
+          conflicting claims, inconsistent availability signals, duplicated content, and poor 
+          answerability for search and AI.
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 3 — THE SOLUTION (Architecture)
+         ============================================================ -->
+    <section class="section" id="solution">
+      <div class="container">
+        <span class="section__label fade-in">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          The Solution
+        </span>
+        <h2 class="section__title fade-in">One governed truth model, many answer surfaces</h2>
+        <p class="section__subtitle fade-in">
+          A Commerce Truth Layer normalizes content from all systems of record into a single canonical 
+          model. That model then drives consistent outputs to every channel — search, AI, retailers, 
+          CRM, and brand sites.
+        </p>
+        <div class="divider"></div>
+
+        <!-- Architecture Diagram -->
+        <div class="architecture fade-in">
+          <div class="arch-diagram">
+            <!-- Layer 1: Sources -->
+            <div class="arch-layer">
+              <div class="arch-layer__label">Sources</div>
+              <div class="arch-layer__content">
+                <div class="arch-box arch-box--source">Salsify / PIM</div>
+                <div class="arch-box arch-box--source">Aprimo / DAM</div>
+                <div class="arch-box arch-box--source">Shopify</div>
+                <div class="arch-box arch-box--source">SFMC / CRM</div>
+                <div class="arch-box arch-box--source">ERP / OMS</div>
+                <div class="arch-box arch-box--source">Legal / MLR</div>
+              </div>
+            </div>
+
+            <div class="arch-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </div>
+
+            <!-- Layer 2: Ingestion -->
+            <div class="arch-layer">
+              <div class="arch-layer__label">Ingest</div>
+              <div class="arch-layer__content">
+                <div class="arch-box arch-box--ingest">Connectors &amp; Webhooks</div>
+                <div class="arch-box arch-box--ingest">Normalization &amp; Mapping</div>
+                <div class="arch-box arch-box--ingest">Validation &amp; Reconciliation</div>
+              </div>
+            </div>
+
+            <div class="arch-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </div>
+
+            <!-- Layer 3: Truth Layer (centerpiece) -->
+            <div class="arch-layer">
+              <div class="arch-layer__label" style="background: var(--coral-100); color: var(--coral-600);">Truth</div>
+              <div class="arch-layer__content">
+                <div class="arch-box arch-box--truth" style="flex: 1; min-width: 100%;">
+                  Commerce Product Truth Layer
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </div>
+
+            <!-- Layer 4: Publication -->
+            <div class="arch-layer">
+              <div class="arch-layer__label">Publish</div>
+              <div class="arch-layer__content">
+                <div class="arch-box arch-box--publish">Shopify PDP Renderer</div>
+                <div class="arch-box arch-box--publish">Article / Advice Pages</div>
+                <div class="arch-box arch-box--publish">JSON-LD Generator</div>
+                <div class="arch-box arch-box--publish">Merchant Feed Builder</div>
+              </div>
+            </div>
+
+            <div class="arch-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </div>
+
+            <!-- Layer 5: Surfaces -->
+            <div class="arch-layer">
+              <div class="arch-layer__label">Surfaces</div>
+              <div class="arch-layer__content">
+                <div class="arch-box arch-box--surface">Google Search</div>
+                <div class="arch-box arch-box--surface">AI Overviews</div>
+                <div class="arch-box arch-box--surface">Bing / Copilot</div>
+                <div class="arch-box arch-box--surface">Retailer Listings</div>
+                <div class="arch-box arch-box--surface">Brand Sites</div>
+                <div class="arch-box arch-box--surface">Future Shopping Agents</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Truth Layer Centerpiece Detail -->
+        <div class="truth-layer fade-in">
+          <div class="truth-layer__grid">
+            <div class="truth-layer__item">
+              <span class="truth-layer__item-icon" aria-hidden="true">📦</span>
+              <span class="truth-layer__item-text">Canonical Product Model — family, variant, parent-child hierarchy</span>
+            </div>
+            <div class="truth-layer__item">
+              <span class="truth-layer__item-icon" aria-hidden="true">🔄</span>
+              <span class="truth-layer__item-text">Variant Handling — GTIN/SKU mapping, offer composition, pricing</span>
+            </div>
+            <div class="truth-layer__item">
+              <span class="truth-layer__item-icon" aria-hidden="true">✅</span>
+              <span class="truth-layer__item-text">Claims &amp; Ingredients — approved claims, ingredient composition, benefits</span>
+            </div>
+            <div class="truth-layer__item">
+              <span class="truth-layer__item-icon" aria-hidden="true">📋</span>
+              <span class="truth-layer__item-text">Usage &amp; Warnings — usage instructions, safety information, warnings</span>
+            </div>
+            <div class="truth-layer__item">
+              <span class="truth-layer__item-icon" aria-hidden="true">🚚</span>
+              <span class="truth-layer__item-text">Offer / Shipping / Returns — availability, shipping SLA, return policy</span>
+            </div>
+            <div class="truth-layer__item">
+              <span class="truth-layer__item-icon" aria-hidden="true">🔍</span>
+              <span class="truth-layer__item-text">Validation &amp; Quality Rules — structural, semantic, AEO readiness scoring</span>
+            </div>
+            <div class="truth-layer__item">
+              <span class="truth-layer__item-icon" aria-hidden="true">🔐</span>
+              <span class="truth-layer__item-text">Approval &amp; Provenance — workflow, audit trail, versioned projections</span>
+            </div>
+            <div class="truth-layer__item">
+              <span class="truth-layer__item-icon" aria-hidden="true">📡</span>
+              <span class="truth-layer__item-text">Channel Projections — Shopify PDP, merchant center, CRM, retailer syndication</span>
+            </div>
+            <div class="truth-layer__item">
+              <span class="truth-layer__item-icon" aria-hidden="true">📊</span>
+              <span class="truth-layer__item-text">Observability — ingestion health, variant drift, markup validation, citation share</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 4 — WHAT AEO AND GEO ACTUALLY DO
+         ============================================================ -->
+    <section class="section section--alt" id="aeo-geo">
+      <div class="container text-center">
+        <span class="section__label fade-in">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          What AEO &amp; GEO Actually Do
+        </span>
+        <h2 class="section__title fade-in">Making your content work harder — everywhere</h2>
+        <p class="section__subtitle fade-in">
+          AEO and GEO are not about gaming algorithms. They are about organizing content so that 
+          search engines, AI systems, and commerce surfaces can understand it, use it, and attribute 
+          it to your brand.
+        </p>
+        <div class="divider divider--center"></div>
+
+        <div class="cards-grid fade-in">
+          <article class="card" id="benefit-answer-pages">
+            <div class="card__icon card__icon--coral" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3 class="card__title">Better Answer Pages</h3>
+            <p class="card__text">
+              Content structured with a direct short answer followed by detailed explanation — 
+              exactly what Google and AI systems look for when surfacing answers.
+            </p>
+          </article>
+
+          <article class="card" id="benefit-product-pages">
+            <div class="card__icon card__icon--blue" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            </div>
+            <h3 class="card__title">Better Product Pages</h3>
+            <p class="card__text">
+              Product pages with consistent attributes, variant handling, and rich detail 
+              that aligns with merchant feed requirements and structured data standards.
+            </p>
+          </article>
+
+          <article class="card" id="benefit-structured-data">
+            <div class="card__icon card__icon--green" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3 class="card__title">Better Structured Data</h3>
+            <p class="card__text">
+              Valid JSON-LD markup (Article, Product, FAQ) generated from the same canonical model — 
+              no handcrafting, no drift, no guessing.
+            </p>
+          </article>
+
+          <article class="card" id="benefit-merchant-content">
+            <div class="card__icon card__icon--grey" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            </div>
+            <h3 class="card__title">Better Merchant-Ready Content</h3>
+            <p class="card__text">
+              Product truth that's already normalized for retailer syndication, feed compliance, and 
+              collection-page consistency — reducing PDP drift.
+            </p>
+          </article>
+
+          <article class="card" id="benefit-source-clarity">
+            <div class="card__icon card__icon--coral" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3 class="card__title">Better Source Clarity</h3>
+            <p class="card__text">
+              Every claim, answer, and content block traces back to an approved source — 
+              important for trust, compliance, and AI citation quality.
+            </p>
+          </article>
+
+          <article class="card" id="benefit-understanding">
+            <div class="card__icon card__icon--blue" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h3 class="card__title">Better Machine Understanding</h3>
+            <p class="card__text">
+              When content is well-organized, consistently structured, and contextually clear, 
+              search engines and AI systems have a better chance of understanding and using it.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 5 — LIVE DEMO EXAMPLES
+         ============================================================ -->
+    <section class="section" id="demo">
+      <div class="container">
+        <span class="section__label fade-in">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Demo Examples
+        </span>
+        <h2 class="section__title fade-in">Public-source demo examples</h2>
+        <p class="section__subtitle fade-in">
+          These examples use publicly available brand content to demonstrate how a Commerce Truth 
+          Layer can structure and normalize information for different audiences and surfaces. 
+          All sources are official public brand pages.
+        </p>
+        <div class="divider"></div>
+
+        <div class="cards-grid fade-in">
+          <!-- Demo 1: Neutrogena Sunscreen -->
+          <article class="demo-card" id="demo-sunscreen">
+            <div class="demo-card__header">
+              <span class="demo-card__brand">Neutrogena</span>
+              <span class="demo-card__type">Consumer Answer Page</span>
+            </div>
+            <div class="demo-card__body">
+              <h3 class="demo-card__question">Best sunscreen for tanning and UV protection</h3>
+              <p class="demo-card__answer">
+                There's no sunscreen designed to help you tan — sunscreen is designed to protect your skin from UV radiation. 
+                Neutrogena's sun protection range includes both mineral and chemical options across SPF levels. 
+                For daily use, broad spectrum SPF 30 or higher is widely recommended by dermatologists.
+              </p>
+              <p class="demo-card__answer" style="font-size: 0.75rem; color: #8E8EA0; font-style: italic;">
+                Source: Neutrogena official sun protection pages (public). This is a demo example, not medical advice.
+              </p>
+              <div class="demo-card__meta">
+                <span class="demo-card__tag demo-card__tag--brand">Neutrogena</span>
+                <span class="demo-card__tag">Sunscreen</span>
+                <span class="demo-card__tag">Consumer</span>
+                <span class="demo-card__tag">Article Schema</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Demo 2: Listerine Mouthwash -->
+          <article class="demo-card" id="demo-mouthwash">
+            <div class="demo-card__header">
+              <span class="demo-card__brand">Listerine</span>
+              <span class="demo-card__type">Consumer Answer Page</span>
+            </div>
+            <div class="demo-card__body">
+              <h3 class="demo-card__question">When to use mouthwash</h3>
+              <p class="demo-card__answer">
+                Use mouthwash as directed as part of a daily oral care routine. Many Listerine educational 
+                pages recommend the sequence: brush, floss, then rinse. Mouthwash can complement brushing 
+                and flossing but is not a replacement for either.
+              </p>
+              <p class="demo-card__answer" style="font-size: 0.75rem; color: #8E8EA0; font-style: italic;">
+                Source: Listerine official oral care guides (public). This is a demo example, not medical advice.
+              </p>
+              <div class="demo-card__meta">
+                <span class="demo-card__tag demo-card__tag--brand">Listerine</span>
+                <span class="demo-card__tag">Oral Care</span>
+                <span class="demo-card__tag">Consumer</span>
+                <span class="demo-card__tag">Article Schema</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Demo 3: TYLENOL Professional -->
+          <article class="demo-card" id="demo-tylenol">
+            <div class="demo-card__header">
+              <span class="demo-card__brand">TYLENOL Professional</span>
+              <span class="demo-card__type">HCP Answer Page</span>
+            </div>
+            <div class="demo-card__body">
+              <h3 class="demo-card__question">Adult dosing guidance for acetaminophen</h3>
+              <p class="demo-card__answer">
+                TYLENOL Professional provides official dosage resources for healthcare professionals 
+                on their public professional website. Dosing guidance, product information, and 
+                professional resources are available for both adult and pediatric use cases.
+              </p>
+              <p class="demo-card__answer" style="font-size: 0.75rem; color: #8E8EA0; font-style: italic;">
+                Source: TYLENOL Professional official site (public). Always refer to official labeling for clinical decisions. This is a demo example, not medical advice.
+              </p>
+              <div class="demo-card__meta">
+                <span class="demo-card__tag demo-card__tag--brand">TYLENOL Professional</span>
+                <span class="demo-card__tag">Adult Dosing</span>
+                <span class="demo-card__tag">HCP</span>
+                <span class="demo-card__tag">Article Schema</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Product Truth Object Example -->
+        <div class="truth-layer fade-in" style="margin-top: 3rem; border-color: var(--charcoal-300);">
+          <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--charcoal-800); color: var(--white); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; padding: 0.25rem 1.25rem; border-radius: 999px; white-space: nowrap;">
+            Sample Product-Linked Truth Object
+          </div>
+          <div style="padding-top: 0.5rem;">
+            <pre style="background: var(--grey-50); border: 1px solid var(--grey-200); border-radius: 10px; padding: 1.5rem; font-size: 0.8rem; line-height: 1.6; overflow-x: auto; color: var(--charcoal-700); font-family: 'SF Mono', 'Fira Code', monospace;"><code>{
+  "content_id": "C004",
+  "audience_type": "consumer",
+  "brand": "Listerine",
+  "topic_cluster": "mouthwash",
+  "question": "when to use mouthwash",
+  "answer_short": "Use mouthwash as directed as part of a daily oral care routine.",
+  "page_type": "answer_page",
+  "linked_products": ["LISTERINE COOL MINT", "LISTERINE TOTAL CARE"],
+  "source_url": "https://www.listerine.com/mouth-coach/rinsing-guide",
+  "source_type": "official brand",
+  "approval_status": "draft",
+  "schema_type": "Article",
+  "canonical_slug": "oral-care/when-to-use-mouthwash"
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 6 — MACHINE-READABLE READINESS
+         ============================================================ -->
+    <section class="section section--alt" id="readiness">
+      <div class="container">
+        <span class="section__label fade-in">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Technical Readiness
+        </span>
+        <h2 class="section__title fade-in">What makes this page machine-readable</h2>
+        <p class="section__subtitle fade-in">
+          This page implements the technical basics that help search engines and AI systems 
+          understand, crawl, and potentially index content. These are standard best practices, 
+          not guarantees of visibility.
+        </p>
+        <div class="divider"></div>
+
+        <div class="checklist fade-in">
+          <div class="checklist__item" id="check-semantic">
+            <span class="checklist__check" aria-hidden="true">✓</span>
+            <span class="checklist__text">Semantic HTML5 structure with proper element hierarchy</span>
+          </div>
+          <div class="checklist__item" id="check-title">
+            <span class="checklist__check" aria-hidden="true">✓</span>
+            <span class="checklist__text">Descriptive &lt;title&gt; tag matching page purpose</span>
+          </div>
+          <div class="checklist__item" id="check-meta">
+            <span class="checklist__check" aria-hidden="true">✓</span>
+            <span class="checklist__text">Meta description summarizing page content</span>
+          </div>
+          <div class="checklist__item" id="check-canonical">
+            <span class="checklist__check" aria-hidden="true">✓</span>
+            <span class="checklist__text">Canonical URL link to prevent duplicate indexing</span>
+          </div>
+          <div class="checklist__item" id="check-og">
+            <span class="checklist__check" aria-hidden="true">✓</span>
+            <span class="checklist__text">Open Graph tags for rich social sharing</span>
+          </div>
+          <div class="checklist__item" id="check-headings">
+            <span class="checklist__check" aria-hidden="true">✓</span>
+            <span class="checklist__text">Clean H1 → H2 → H3 heading hierarchy</span>
+          </div>
+          <div class="checklist__item" id="check-jsonld">
+            <span class="checklist__check" aria-hidden="true">✓</span>
+            <span class="checklist__text">JSON-LD structured data (WebSite, WebPage, Organization, FAQPage)</span>
+          </div>
+          <div class="checklist__item" id="check-crawlable">
+            <span class="checklist__check" aria-hidden="true">✓</span>
+            <span class="checklist__text">Crawlable internal anchor links throughout</span>
+          </div>
+          <div class="checklist__item" id="check-sitemap">
+            <span class="checklist__check" aria-hidden="true">✓</span>
+            <span class="checklist__text">sitemap.xml for search engine discovery</span>
+          </div>
+          <div class="checklist__item" id="check-robots">
+            <span class="checklist__check" aria-hidden="true">✓</span>
+            <span class="checklist__text">robots.txt allowing all crawlers</span>
+          </div>
+          <div class="checklist__item" id="check-a11y">
+            <span class="checklist__check" aria-hidden="true">✓</span>
+            <span class="checklist__text">Accessibility basics — ARIA labels, alt text, keyboard nav</span>
+          </div>
+          <div class="checklist__item" id="check-fast">
+            <span class="checklist__check" aria-hidden="true">✓</span>
+            <span class="checklist__text">Lightweight static page — no heavy frameworks, fast loading</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 7 — WHY PUBLIC HOSTING MATTERS
+         ============================================================ -->
+    <section class="section" id="hosting">
+      <div class="container">
+        <span class="section__label fade-in">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Why Public Hosting Matters
+        </span>
+        <h2 class="section__title fade-in">From localhost to publicly visible</h2>
+        <p class="section__subtitle fade-in">
+          Content that lives on your laptop or behind a firewall can never be seen by search 
+          engines or public AI systems. Public hosting is the first step toward discoverability.
+        </p>
+        <div class="divider"></div>
+
+        <div class="hosting-grid fade-in">
+          <article class="hosting-card" id="hosting-localhost">
+            <div class="hosting-card__icon card__icon--coral" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="hosting-card__text">
+              <h3>Localhost is invisible</h3>
+              <p>
+                Pages running on localhost or a local dev server cannot be crawled by Google, Bing, 
+                or any public AI web search. No matter how well-structured the content is, it's 
+                completely invisible to the outside world.
+              </p>
+            </div>
+          </article>
+
+          <article class="hosting-card" id="hosting-public">
+            <div class="hosting-card__icon card__icon--green" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="hosting-card__text">
+              <h3>Public URLs can be crawled</h3>
+              <p>
+                A public GitHub Pages URL can be crawled and indexed <em>in principle</em> by search engines 
+                and AI systems. This is the necessary first step — though crawling and indexing are 
+                never guaranteed.
+              </p>
+            </div>
+          </article>
+
+          <article class="hosting-card" id="hosting-sitemap">
+            <div class="hosting-card__icon card__icon--blue" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div class="hosting-card__text">
+              <h3>Sitemaps help discovery</h3>
+              <p>
+                A sitemap.xml helps search engines discover your pages more efficiently. 
+                It signals what exists and when it was last updated — but it does not guarantee 
+                that any page will be indexed or ranked.
+              </p>
+            </div>
+          </article>
+
+          <article class="hosting-card" id="hosting-console">
+            <div class="hosting-card__icon card__icon--grey" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="hosting-card__text">
+              <h3>Search Console submission recommended</h3>
+              <p>
+                Submitting your live URL and sitemap to Google Search Console and Bing Webmaster Tools 
+                is the recommended way to request crawling. This doesn't force indexing but 
+                gives your content the best chance of being discovered.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION — FAQ (visible, matching JSON-LD)
+         ============================================================ -->
+    <section class="section section--coral-tint" id="faq">
+      <div class="container">
+        <span class="section__label fade-in">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Frequently Asked Questions
+        </span>
+        <h2 class="section__title fade-in">Common questions about this approach</h2>
+        <div class="divider"></div>
+
+        <div class="cards-grid cards-grid--2col fade-in" style="margin-top: 2rem;">
+          <article class="card" id="faq-aeo">
+            <h3 class="card__title">What is Answer Engine Optimization (AEO)?</h3>
+            <p class="card__text">
+              AEO is the practice of making web pages easier for answer engines like Google to extract 
+              and display direct answers. It involves structuring content with clear headings, 
+              answer-first layouts, and machine-readable structured data so search engines can 
+              confidently surface your content in answer boxes and featured snippets.
+            </p>
+          </article>
+
+          <article class="card" id="faq-geo">
+            <h3 class="card__title">What is Generative Engine Optimization (GEO)?</h3>
+            <p class="card__text">
+              GEO is the practice of making web content easier for generative AI tools — like 
+              ChatGPT, Google AI Overviews, and Copilot — to summarize, cite, and reference. 
+              It focuses on source transparency, clear authorship, traceable claims, and well-structured 
+              content that AI systems can understand and attribute.
+            </p>
+          </article>
+
+          <article class="card" id="faq-truth">
+            <h3 class="card__title">What is a Commerce Truth Layer?</h3>
+            <p class="card__text">
+              A Commerce Truth Layer is a governed, canonical content and data model that normalizes 
+              product information from multiple systems of record — including PIM, DAM, CMS, ERP, and 
+              legal/MLR systems — into a single source of truth. This normalized truth can then 
+              drive consistent outputs across brand websites, retailer listings, structured data feeds, 
+              AI answer surfaces, and CRM channels.
+            </p>
+          </article>
+
+          <article class="card" id="faq-hosting">
+            <h3 class="card__title">Why does public hosting matter for AEO and GEO?</h3>
+            <p class="card__text">
+              Content hosted on localhost or behind firewalls cannot be seen by search engines or 
+              public AI systems. A publicly hosted page — such as on GitHub Pages — can in principle 
+              be crawled and indexed by Google, Bing, and other systems. However, public hosting 
+              does not guarantee indexing, ranking, or pickup by any search or AI engine.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       SECTION 8 — FOOTER / CTA
+       ============================================================ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">
+            <span class="footer__brand-icon" aria-hidden="true">CT</span>
+            Commerce Truth Layer
+          </div>
+          <p class="footer__description">
+            Built as a public proof of concept demonstrating how a Commerce Truth Layer can improve 
+            content answerability for search engines, AI answer surfaces, merchant feeds, and future 
+            shopping assistants. This is a solo POC — lean, focused, and publicly hosted.
+          </p>
+        </div>
+        <div>
+          <h3 class="footer__heading">Navigate</h3>
+          <ul class="footer__links">
+            <li><a href="#problem">The Problem</a></li>
+            <li><a href="#solution">Architecture</a></li>
+            <li><a href="#aeo-geo">AEO &amp; GEO</a></li>
+            <li><a href="#demo">Demo Examples</a></li>
+            <li><a href="#readiness">Technical Readiness</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__heading">Resources</h3>
+          <ul class="footer__links">
+            <li><a href="https://github.com/moghthalkushal/aeo-demo" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+            <li><a href="https://moghthalkushal.github.io/aeo-demo/" target="_blank" rel="noopener noreferrer">Live Demo (GitHub Pages)</a></li>
+            <li><a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer">Google Search Console</a></li>
+            <li><a href="https://www.bing.com/webmasters" target="_blank" rel="noopener noreferrer">Bing Webmaster Tools</a></li>
+            <li><a href="https://search.google.com/test/rich-results" target="_blank" rel="noopener noreferrer">Rich Results Test</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          &copy; <span id="footer-year">2026</span> Commerce Truth Layer Project. Public proof of concept.
+        </p>
+        <p class="footer__note">
+          Public web visibility, search engine indexing, and AI answer pickup are subject 
+          to each system's own policies and decisions. Nothing on this page guarantees 
+          ranking, indexing, or citation by any search or AI platform.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scroll to top button -->
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="19" x2="12" y2="5"/>
+      <polyline points="5 12 12 5 19 12"/>
+    </svg>
+  </button>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>

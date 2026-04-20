@@ -1,0 +1,8 @@
+# Commerce Truth Layer — robots.txt
+# Allow all crawlers to access this public demo site
+
+User-agent: *
+Allow: /
+
+# Sitemap location (update with your actual GitHub Pages URL)
+Sitemap: https://moghthalkushal.github.io/aeo-demo/sitemap.xml
