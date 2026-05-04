@@ -1,5 +1,20 @@
-# Commerce Truth Layer — robots.txt
-# Allow all crawlers to access this public demo site
+User-agent: Bingbot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
 
 User-agent: *
 Allow: /
